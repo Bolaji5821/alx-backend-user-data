@@ -3,7 +3,6 @@
 """
 from uuid import uuid4
 from flask import request
-
 from .auth import Auth
 from models.user import User
 
@@ -33,3 +32,6 @@ class SessionAuth(Auth):
         """
         user_id = self.user_id_for_session_id(self.session_cookie(request))
         return User.get(user_id)
+
+
+
