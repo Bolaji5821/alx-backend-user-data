@@ -36,7 +36,6 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-
     def add_user(self, email: str, hashed_password: str) -> User:
         """Adds a new user to the database.
         """
@@ -49,7 +48,6 @@ class DB:
             new_user = None
         return new_user
 
-
     def find_user_by(self, **kwargs) -> User:
         """
         find_user_by.
@@ -61,7 +59,6 @@ class DB:
             return session.query(User).filter_by(**kwargs).one()
         except Exception:
             raise NoResultFound
-
 
     def update_user(self, user_id: int, **kwargs) -> None:
         """
