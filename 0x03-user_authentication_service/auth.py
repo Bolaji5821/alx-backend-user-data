@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Auth class
+""" Contains the Auth class
 """
 from db import DB
 from typing import TypeVar
@@ -13,7 +13,7 @@ def _hash_password(password: str) -> str:
     """
     _hash_password.
     """
-    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+    return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
 
 
 def _generate_uuid() -> str:
@@ -49,7 +49,7 @@ class Auth:
             user = self._db.find_user_by(email=email)
         except NoResultFound:
             return False
-        return bcrypt.checkpw(password.encode('utf-8'), user.hashed_password)
+        return bcrypt.checkpw(password.encode("utf-8"), user.hashed_password)
 
     def create_session(self, email: str) -> str:
         """
@@ -103,8 +103,8 @@ class Auth:
         """
         try:
             user = self._db.find_user_by(reset_token=reset_token)
-            self._db.update_user(user.id,
-                                 hashed_password=_hash_password(password),
-                                 reset_token=None)
+            self._db.update_user(
+                user.id, hashed_password=_hash_password(password), reset_token=None
+            )
         except NoResultFound:
             raise ValueError
