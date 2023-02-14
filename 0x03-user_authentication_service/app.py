@@ -32,6 +32,7 @@ def user() -> str:
     except Exception:
         return jsonify({"message": "email already registered"}), 400
 
+
 @app.route('/sessions', methods=['POST'], strict_slashes=False)
 def login() -> str:
     """ POST /sessions
@@ -49,6 +50,7 @@ def login() -> str:
     else:
         abort(401)
 
+
 @app.route('/sessions', methods=['DELETE'], strict_slashes=False)
 def logout() -> str:
     """ DELETE /sessions
@@ -62,5 +64,7 @@ def logout() -> str:
         return redirect('/')
     else:
         abort(403)
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
