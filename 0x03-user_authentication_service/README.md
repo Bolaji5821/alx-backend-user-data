@@ -1,7 +1,7 @@
 Toggle navigation
 Curriculum
 Short Specializations
-Average: 107.45%
+Average:  107.45%
 0x03. User authentication service
 Back-end
 Authentification
